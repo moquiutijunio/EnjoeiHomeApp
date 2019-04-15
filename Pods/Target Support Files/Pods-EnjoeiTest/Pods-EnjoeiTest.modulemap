@@ -1,0 +1,6 @@
+framework module Pods_EnjoeiTest {
+  umbrella header "Pods-EnjoeiTest-umbrella.h"
+
+  export *
+  module * { export * }
+}

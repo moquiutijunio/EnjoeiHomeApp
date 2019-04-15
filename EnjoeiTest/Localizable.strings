@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  EnjoeiTest
+
+  Created by Junio Moquiuti on 15/04/19.
+  Copyright © 2019 Junio Moquiuti. All rights reserved.
+*/
+
+"profile" = "Perfil";
+"home" = "Início";
+"search" = "Buscar";
+"upload" = "Enviar";
+"inbox" = "Caixa de entrada";
+
+//Error
+"message.error" = "Um erro desconhecido ocorreu, tente novamente mais tarde.";
+"product.empty" = "Nenhum produto encontrado, tente novamente mais tarde.";
