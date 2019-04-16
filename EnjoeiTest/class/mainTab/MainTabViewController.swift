@@ -33,7 +33,6 @@ class MainTabViewController: UITabBarController {
     
     private func addTabs() {
         let homeController = UINavigationController(rootViewController: homeViewController)
-        homeViewController.title = NSLocalizedString("home", comment: "")
         homeController.tabBarItem = UITabBarItem(title: nil,
                                                  image: UIImage(named: "ic_home"),
                                                  selectedImage: UIImage(named: "ic_home_selected"))

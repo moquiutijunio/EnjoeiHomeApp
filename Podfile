@@ -8,10 +8,9 @@ target 'EnjoeiTest' do
     
     # Pods for EnjoeiTest
     
-    pod 'Cartography'
     pod 'INSPullToRefresh'
+    pod 'Cartography'
     pod 'Kingfisher'
-    
     
     swift4 = ['Cartography', 'Kingfisher']
     

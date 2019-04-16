@@ -17,7 +17,8 @@ enum ProductRequestStatus {
 }
 
 class HomeViewController: UIViewController {
-        
+    
+    
     private let firstPathPage = "/vNWpzLB9"
     private let secondPathPage = "/X2r3iTxJ"
     private var lastListIsShow = false
@@ -33,22 +34,6 @@ class HomeViewController: UIViewController {
         collectionView.register(UINib(nibName: MessageCollectionViewCell.nibName, bundle: nil), forCellWithReuseIdentifier: MessageCollectionViewCell.nibName)
         collectionView.register(UINib(nibName: LoadingCollectionViewCell.nibName, bundle: nil), forCellWithReuseIdentifier: LoadingCollectionViewCell.nibName)
         
-        view.addSubview(collectionView)
-
-        constrain(view, collectionView, car_topLayoutGuide, car_bottomLayoutGuide) { (container, collection, topGuide, bottomGuide) in
-            collection.left == container.left
-            collection.right == container.right
-
-            if #available(iOS 11.0, *) {
-                collection.top == container.safeAreaLayoutGuide.top - 85
-                collection.bottom == container.safeAreaLayoutGuide.bottom
-
-            } else {
-                collection.top == topGuide.bottom - 65
-                collection.bottom == bottomGuide.top
-            }
-        }
-        
         return collectionView
     }()
     
@@ -60,6 +45,12 @@ class HomeViewController: UIViewController {
                 self?.updateInfinityScrollAndPullToRefresh()
             }
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        addSubviews()
     }
     
     override func viewDidLoad() {
@@ -75,13 +66,46 @@ class HomeViewController: UIViewController {
         
         pullToRefreshAction()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+}
+
+// MARK: - Layout subviews
+extension HomeViewController {
+    
+    private func addSubviews() {
+        view.addSubview(collectionView)
+        constrain(view, collectionView) { (container, collection) in
+            collection.left == container.left
+            collection.right == container.right
+            
+            if #available(iOS 11.0, *) {
+                collection.top == container.safeAreaLayoutGuide.top
+                collection.bottom == container.safeAreaLayoutGuide.bottom
+                
+            } else {
+                collection.top == container.top
+                collection.bottom == container.bottom
+            }
+        }
+    }
 }
 
 // MARK: - Route method
 extension HomeViewController {
     
     private func goToProductDetailsWith(_ product: Product) {
-        let productDetailsViewController = ProductDetailsViewController(product: product)        
+        let productDetailsViewController = ProductDetailsViewController(product: product)
+        productDetailsViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(productDetailsViewController, animated: true)
     }
 }
@@ -126,7 +150,7 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func pullToRefreshAction() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {[unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {[unowned self] in
             self.requestProductList(path: self.firstPathPage, reloadViewModels: true)
         }
     }
@@ -230,12 +254,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         case .failure(let error):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCollectionViewCell.nibName, for: indexPath) as! MessageCollectionViewCell
-            cell.bindIn(viewModel: MessageSectionModel(message: error))
+            cell.bindIn(message: error)
             return cell
             
         case .empty:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCollectionViewCell.nibName, for: indexPath) as! MessageCollectionViewCell
-            cell.bindIn(viewModel: MessageSectionModel(message: NSLocalizedString("product.empty", comment: "")))
+            cell.bindIn(message: NSLocalizedString("product.empty", comment: ""))
             return cell
             
         }

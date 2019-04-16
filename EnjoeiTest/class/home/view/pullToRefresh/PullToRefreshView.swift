@@ -11,10 +11,6 @@ import INSPullToRefresh
 
 class PullToRefreshView: UIView {
     
-    class func instantiateFromNib() -> PullToRefreshView {
-        return Bundle.main.loadNibNamed("PullToRefreshView", owner: self, options: nil)?.first as! PullToRefreshView
-    }
-    
     @IBOutlet weak var gifImageView: UIImageView!
     
     private func startAnimating() {
@@ -28,6 +24,7 @@ class PullToRefreshView: UIView {
 }
 
 extension PullToRefreshView: INSPullToRefreshBackgroundViewDelegate {
+    
     func pull(_ pullToRefreshBackgroundView: INSPullToRefreshBackgroundView!, didChange state: INSPullToRefreshBackgroundViewState) {
         switch state {
         case .none:
@@ -40,5 +37,12 @@ extension PullToRefreshView: INSPullToRefreshBackgroundViewDelegate {
             stopAnimating()
 
         }
+    }
+}
+
+extension PullToRefreshView {
+    
+    class func instantiateFromNib() -> PullToRefreshView {
+        return Bundle.main.loadNibNamed("PullToRefreshView", owner: self, options: nil)?.first as! PullToRefreshView
     }
 }

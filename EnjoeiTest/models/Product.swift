@@ -6,7 +6,6 @@
 //  Copyright © 2019 Junio Moquiuti. All rights reserved.
 //
 
-
 struct Product {
     var title: String
     var images: [Image]
@@ -15,6 +14,8 @@ struct Product {
     var userImage: Image
     var likesCount: Int?
     var size: String?
+    var discountPercentage: Int
+    var maximumInstallment: Int
     
     init?(json: [String: Any]) {
         guard let title = json["seo_title"] as? String,
@@ -24,7 +25,6 @@ struct Product {
             let userAvatarJson = userJson["avatar"] as? [String: Any],
             let userImage = Image(json: userAvatarJson),
             let imagesPathsJson = json["photos"] as? [[String: Any]] else {
-                
                 return nil
         }
         
@@ -35,5 +35,7 @@ struct Product {
         self.likesCount = json["likes_count"] as? Int ?? 0
         self.size = json["size"] as? String
         self.images = Image.mapArray(imagesPathsJson: imagesPathsJson)
+        self.discountPercentage = json["discount_percentage"] as? Int ?? 0
+        self.maximumInstallment = json["maximum_installment"] as? Int ?? 0
     }
 }

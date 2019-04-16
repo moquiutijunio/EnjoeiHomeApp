@@ -8,20 +8,9 @@
 
 import UIKit
 
-class MessageSectionModel: NSObject {
-    
-    let message: String
-    
-    init(message: String) {
-        self.message = message
-    }
-}
-
 class MessageCollectionViewCell: BaseCollectionViewCell {
     
     @IBOutlet weak var messageLabel: UILabel!
-    
-    var viewModel: MessageSectionModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,9 +25,7 @@ class MessageCollectionViewCell: BaseCollectionViewCell {
         messageLabel.textColor = .gray2
     }
     
-    func bindIn(viewModel: MessageSectionModel) {
-        messageLabel.text = viewModel.message
-        
-        self.viewModel = viewModel
+    func bindIn(message: String) {
+        messageLabel.text = message
     }
 }

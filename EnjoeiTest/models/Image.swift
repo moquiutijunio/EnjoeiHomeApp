@@ -17,23 +17,12 @@ struct Image {
     
     init?(json: [String: Any]) {
         guard let imagePathString = json["image_public_id"] as? String,
-            let imageURL = URL(string: "\(APIClientHost.photoBaseURLString)/1100xN/\(imagePathString).jpg") else {
-            return nil
+            let imageURL = URL(string: "\(APIClientHost.photoBaseURLString)/800x800/\(imagePathString).jpg") else {
+                return nil
         }
         
         self.imageURL = imageURL
     }
-    
-//    static func mapArray(paths: [String]) -> [Image] {
-//
-//        var images = [Image]()
-//        for path in paths {
-//            guard let url = URL(string: "\(APIClientHost.photoBaseURLString)/1100xN/\(path).jpg") else { break }
-//            images.append(Image(imageURL: url))
-//        }
-//
-//        return images
-//    }
     
     static func mapArray(imagesPathsJson: [[String: Any]]) -> [Image] {
         var images = [Image]()
