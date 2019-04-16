@@ -20,8 +20,7 @@ class HomeViewController: UIViewController {
     
     
     private let firstPathPage = "/vNWpzLB9"
-    private let secondPathPage = "/X2r3iTxJ"
-    private var lastListIsShow = false
+    private let nextPathPage = "/X2r3iTxJ"
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -141,8 +140,6 @@ extension HomeViewController {
                 }
             }
         }.resume()
-        
-        self.lastListIsShow = !reloadViewModels
     }
 }
 
@@ -156,7 +153,7 @@ extension HomeViewController {
     }
     
     private func infinityScrollAction() {
-        requestProductList(path: secondPathPage)
+        requestProductList(path: nextPathPage)
     }
     
     private func updateInfinityScrollAndPullToRefresh() {
@@ -169,11 +166,7 @@ extension HomeViewController {
                 collectionView.ins_setInfinityScrollEnabled(false)
             } else {
                 collectionView.ins_setPull(toRefreshEnabled: true)
-                if lastListIsShow {
-                    collectionView.ins_setInfinityScrollEnabled(false)
-                } else {
-                    collectionView.ins_setInfinityScrollEnabled(true)
-                }
+                collectionView.ins_setInfinityScrollEnabled(true)
             }
             
         case .loading:
