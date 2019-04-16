@@ -31,9 +31,9 @@ class MessageCollectionViewCell: BaseCollectionViewCell {
     
     private func applyLayout() {
         
-        messageLabel.font = UIFont.systemFont(ofSize: 14) //TODO verificar a font correta
+        messageLabel.font = UIFont.proximaNovaRegular(ofSize: 14)
         messageLabel.textAlignment = .center
-        messageLabel.textColor = .black
+        messageLabel.textColor = .gray2
     }
     
     func bindIn(viewModel: MessageSectionModel) {

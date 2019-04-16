@@ -17,7 +17,7 @@ enum ProductRequestStatus {
 }
 
 class HomeViewController: UIViewController {
-    
+        
     private let firstPathPage = "/vNWpzLB9"
     private let secondPathPage = "/X2r3iTxJ"
     private var lastListIsShow = false
@@ -65,19 +65,70 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.addPullToRefreshToScrollView { [weak self] (_) in
-            self?.pullToRefreshAction()
+        collectionView.addPullToRefreshToScrollView {[unowned self] (_) in
+            self.pullToRefreshAction()
         }
         
-        collectionView.addInfinityScrollRefreshView { [weak self] (_) in
-            self?.infinityScrollAction()
+        collectionView.addInfinityScrollRefreshView {[unowned self] (_) in
+            self.infinityScrollAction()
         }
         
-        requestProductList(path: firstPathPage, reloadViewModels: true)
+        pullToRefreshAction()
     }
+}
+
+// MARK: - Route method
+extension HomeViewController {
+    
+    private func goToProductDetailsWith(_ product: Product) {
+        let productDetailsViewController = ProductDetailsViewController(product: product)        
+        self.navigationController?.pushViewController(productDetailsViewController, animated: true)
+    }
+}
+
+// MARK: - Request method
+extension HomeViewController {
+    
+    private func requestProductList(path: String, reloadViewModels: Bool = false) {
+        guard let url = URL(string: "\(APIClientHost.baseURLString)\(path)") else {
+            productRequestStatus = .failure(error: NSLocalizedString("message.error", comment: ""))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) {[weak self] (data, response, error) in
+            
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
+                if let productsJson = jsonObj!.value(forKey: "products") as? NSArray {
+        
+                    var products = [Product]()
+                    for productJson in productsJson {
+                        guard let productJson = productJson as? [String: Any] else { break }
+                        guard let product = Product(json: productJson) else { break }
+                        products.append(product)
+                    }
+                    
+                    if reloadViewModels {
+                        self?.productViewModels = products.map {ProductViewModel(product: $0)}
+                    } else {
+                        self?.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
+                    }
+                    
+                    self?.productRequestStatus = .success
+                }
+            }
+        }.resume()
+        
+        self.lastListIsShow = !reloadViewModels
+    }
+}
+
+// MARK: - Pull to refresh and infinity scroll methods
+extension HomeViewController {
     
     private func pullToRefreshAction() {
-        requestProductList(path: firstPathPage, reloadViewModels: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {[unowned self] in
+            self.requestProductList(path: self.firstPathPage, reloadViewModels: true)
+        }
     }
     
     private func infinityScrollAction() {
@@ -117,41 +168,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController {
-    
-    private func requestProductList(path: String, reloadViewModels: Bool = false) {
-        guard let url = URL(string: "\(APIClientHost.baseURLString)\(path)") else {
-            productRequestStatus = .failure(error: NSLocalizedString("message.error", comment: ""))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) {[weak self] (data, response, error) in
-            
-            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
-                if let productsJson = jsonObj!.value(forKey: "products") as? NSArray {
-        
-                    var products = [Product]()
-                    for productJson in productsJson {
-                        guard let productJson = productJson as? [String: Any] else { break }
-                        guard let product = Product(json: productJson) else { break }
-                        products.append(product)
-                    }
-                    
-                    if reloadViewModels {
-                        self?.productViewModels = products.map {ProductViewModel(product: $0)}
-                    } else {
-                        self?.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
-                    }
-                    
-                    self?.productRequestStatus = .success
-                }
-            }
-        }.resume()
-        
-        self.lastListIsShow = !reloadViewModels
-    }
-}
-
+// MARK: - UICollectionView delegate flow layout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -183,6 +200,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UICollectionView Delegate and DataSource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -226,7 +244,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch productRequestStatus {
         case .success:
-            print("TODO did tap \(productViewModels[indexPath.row].title)")
+            goToProductDetailsWith(productViewModels[indexPath.row].product)
             
         default:
             return

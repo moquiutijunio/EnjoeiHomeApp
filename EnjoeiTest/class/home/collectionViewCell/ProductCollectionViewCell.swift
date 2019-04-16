@@ -33,7 +33,7 @@ class ProductViewModel: NSObject {
         attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: text))
         if let size = product.size {
             let range = (text as NSString).range(of: "- tam \(size)")
-            attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray, range: range)
+            attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray2, range: range)
         }
     }
 }
@@ -59,34 +59,37 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     
     private func applyLayout() {
         backgroundColor = .white
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.lightGray2.cgColor
         
-        avatarContainerView.layer.borderWidth = 1
-        avatarContainerView.layer.borderColor = UIColor.lightGray.cgColor
+        avatarContainerView.layer.borderWidth = 0.5
+        avatarContainerView.layer.borderColor = UIColor.lightGray2.cgColor
         
-        likeContainerView.layer.borderWidth = 1
-        likeContainerView.layer.borderColor = UIColor.lightGray.cgColor
+        likeContainerView.layer.borderWidth = 0.5
+        likeContainerView.layer.borderColor = UIColor.lightGray2.cgColor
         
         photoImageView.contentMode = .scaleAspectFill
-        photoImageView.backgroundColor = .lightGray
+        photoImageView.backgroundColor = .lightGray2
         photoImageView.clipsToBounds = true
         
-        titleLabel.font = UIFont.systemFont(ofSize: 16) //TODO verificar a font correta
+        titleLabel.font = UIFont.proximaNovaRegularLight(ofSize: 16)
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .gray
+        titleLabel.textColor = .gray2
         
-        detailsLabel.font = UIFont.systemFont(ofSize: 14) //TODO verificar a font correta
+        detailsLabel.font = UIFont.proximaNovaRegular(ofSize: 14)
         detailsLabel.textAlignment = .center
         detailsLabel.textColor = .primaryColor
         
-        avatarImageView.backgroundColor = .lightGray
+        avatarImageView.backgroundColor = .lightGray2
         avatarImageView.contentMode = .scaleAspectFit
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width/2
         avatarImageView.clipsToBounds = true
         
         likeImageView.image = UIImage(named: "ic_like")
         likeImageView.contentMode = .scaleAspectFit
+        
+        likeCountLabel.font = UIFont.proximaNovaRegular(ofSize: 14)
+        likeCountLabel.textColor = .gray2
     }
     
     func bindIn(viewModel: ProductViewModel) {

@@ -21,7 +21,8 @@ class LoadingCollectionViewCell: BaseCollectionViewCell {
     
     private func applyLayout() {
         backgroundColor = .clear
-        activityIndicationView.color = .black
+        
+        activityIndicationView.color = .primaryColor
         activityIndicationView.startAnimating()
     }
 }

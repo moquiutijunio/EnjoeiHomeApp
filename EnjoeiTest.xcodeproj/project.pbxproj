@@ -26,7 +26,7 @@
 		F0AB61C32265153F00626CC8 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61C12265153F00626CC8 /* LoadingCollectionViewCell.swift */; };
 		F0AB61C42265153F00626CC8 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61C22265153F00626CC8 /* LoadingCollectionViewCell.xib */; };
 		F0AB61C7226515D500626CC8 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61C6226515D500626CC8 /* BaseCollectionViewCell.swift */; };
-		F0AB61CB226524A000626CC8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61CA226524A000626CC8 /* Helper.swift */; };
+		F0AB61CB226524A000626CC8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61CA226524A000626CC8 /* Color.swift */; };
 		F0AB61CD226524F700626CC8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61CC226524F700626CC8 /* APIClient.swift */; };
 		F0AB61CF22653B5D00626CC8 /* reload.gif in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61CE22653B5C00626CC8 /* reload.gif */; };
 		F0AB61D722655D3800626CC8 /* PullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61D622655D3800626CC8 /* PullToRefreshExtensions.swift */; };
@@ -35,6 +35,13 @@
 		F0AB61DD22655D6400626CC8 /* InfinityScrollRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61DC22655D6400626CC8 /* InfinityScrollRefreshView.swift */; };
 		F0AB61DF22655D6C00626CC8 /* InfinityScrollRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61DE22655D6C00626CC8 /* InfinityScrollRefreshView.xib */; };
 		F0AB61E12265693C00626CC8 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61E02265693C00626CC8 /* iOSDevCenters+GIF.swift */; };
+		F0AB61E32265F7DB00626CC8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61E22265F7DB00626CC8 /* Font.swift */; };
+		F0AB61E72265FB8A00626CC8 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61E62265FB8A00626CC8 /* ProductDetailsViewController.swift */; };
+		F0AB61EE2266023F00626CC8 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61EC2266018300626CC8 /* ProximaNova-Bold.otf */; };
+		F0AB61EF2266024200626CC8 /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61EB2266018300626CC8 /* ProximaNova-Light.otf */; };
+		F0AB61F02266024500626CC8 /* ProximaNova-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61EA2266018200626CC8 /* ProximaNova-LightItalic.otf */; };
+		F0AB61F12266024800626CC8 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61E92266018200626CC8 /* ProximaNova-Regular.otf */; };
+		F0AB61F22266024A00626CC8 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61ED2266018300626CC8 /* ProximaNova-Semibold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +82,7 @@
 		F0AB61C12265153F00626CC8 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0AB61C22265153F00626CC8 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		F0AB61C6226515D500626CC8 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		F0AB61CA226524A000626CC8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		F0AB61CA226524A000626CC8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F0AB61CC226524F700626CC8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F0AB61CE22653B5C00626CC8 /* reload.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = reload.gif; sourceTree = "<group>"; };
 		F0AB61D622655D3800626CC8 /* PullToRefreshExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshExtensions.swift; sourceTree = "<group>"; };
@@ -84,6 +91,13 @@
 		F0AB61DC22655D6400626CC8 /* InfinityScrollRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityScrollRefreshView.swift; sourceTree = "<group>"; };
 		F0AB61DE22655D6C00626CC8 /* InfinityScrollRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfinityScrollRefreshView.xib; sourceTree = "<group>"; };
 		F0AB61E02265693C00626CC8 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		F0AB61E22265F7DB00626CC8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		F0AB61E62265FB8A00626CC8 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		F0AB61E92266018200626CC8 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		F0AB61EA2266018200626CC8 /* ProximaNova-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-LightItalic.otf"; sourceTree = "<group>"; };
+		F0AB61EB2266018300626CC8 /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
+		F0AB61EC2266018300626CC8 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		F0AB61ED2266018300626CC8 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F08338E22264CA4B0052F90E /* EnjoeiTest */,
+				F0AB61E82266015700626CC8 /* fonts */,
 				F08338F72264CA4C0052F90E /* EnjoeiTestUITests */,
 				F08338E12264CA4B0052F90E /* Products */,
 				A6100C7A37033400A0D1C635 /* Pods */,
@@ -151,9 +166,7 @@
 			children = (
 				F0AB61B12264E2FE00626CC8 /* models */,
 				F0AB61A72264D20300626CC8 /* utils */,
-				F0AB61C5226515C700626CC8 /* base */,
-				F0AB61A02264CBAE00626CC8 /* mainTab */,
-				F0AB61AC2264DE6400626CC8 /* home */,
+				F0AB61E42265FA4A00626CC8 /* class */,
 				F08338E32264CA4B0052F90E /* AppDelegate.swift */,
 				F08338EA2264CA4C0052F90E /* Assets.xcassets */,
 				F08338EC2264CA4C0052F90E /* LaunchScreen.storyboard */,
@@ -185,7 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				F0AB61CC226524F700626CC8 /* APIClient.swift */,
-				F0AB61CA226524A000626CC8 /* Helper.swift */,
+				F0AB61CA226524A000626CC8 /* Color.swift */,
+				F0AB61E22265F7DB00626CC8 /* Font.swift */,
 				F0AB61E02265693C00626CC8 /* iOSDevCenters+GIF.swift */,
 			);
 			path = utils;
@@ -194,8 +208,8 @@
 		F0AB61AC2264DE6400626CC8 /* home */ = {
 			isa = PBXGroup;
 			children = (
-				F0AB61D522655CFF00626CC8 /* refresh */,
-				F0AB61B82264F6D800626CC8 /* viewCell */,
+				F0AB61D522655CFF00626CC8 /* view */,
+				F0AB61B82264F6D800626CC8 /* collectionViewCell */,
 				F0AB61AD2264DE8300626CC8 /* HomeViewController.swift */,
 			);
 			path = home;
@@ -211,7 +225,7 @@
 			path = models;
 			sourceTree = "<group>";
 		};
-		F0AB61B82264F6D800626CC8 /* viewCell */ = {
+		F0AB61B82264F6D800626CC8 /* collectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				F0AB61B92264F6FD00626CC8 /* ProductCollectionViewCell.swift */,
@@ -221,7 +235,7 @@
 				F0AB61C12265153F00626CC8 /* LoadingCollectionViewCell.swift */,
 				F0AB61C22265153F00626CC8 /* LoadingCollectionViewCell.xib */,
 			);
-			path = viewCell;
+			path = collectionViewCell;
 			sourceTree = "<group>";
 		};
 		F0AB61C5226515C700626CC8 /* base */ = {
@@ -232,7 +246,7 @@
 			path = base;
 			sourceTree = "<group>";
 		};
-		F0AB61D522655CFF00626CC8 /* refresh */ = {
+		F0AB61D522655CFF00626CC8 /* view */ = {
 			isa = PBXGroup;
 			children = (
 				F0AB61D622655D3800626CC8 /* PullToRefreshExtensions.swift */,
@@ -241,7 +255,38 @@
 				F0AB61DC22655D6400626CC8 /* InfinityScrollRefreshView.swift */,
 				F0AB61DE22655D6C00626CC8 /* InfinityScrollRefreshView.xib */,
 			);
-			path = refresh;
+			path = view;
+			sourceTree = "<group>";
+		};
+		F0AB61E42265FA4A00626CC8 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				F0AB61C5226515C700626CC8 /* base */,
+				F0AB61A02264CBAE00626CC8 /* mainTab */,
+				F0AB61AC2264DE6400626CC8 /* home */,
+				F0AB61E52265FA6100626CC8 /* productDetails */,
+			);
+			path = class;
+			sourceTree = "<group>";
+		};
+		F0AB61E52265FA6100626CC8 /* productDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F0AB61E62265FB8A00626CC8 /* ProductDetailsViewController.swift */,
+			);
+			path = productDetails;
+			sourceTree = "<group>";
+		};
+		F0AB61E82266015700626CC8 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F0AB61EC2266018300626CC8 /* ProximaNova-Bold.otf */,
+				F0AB61EB2266018300626CC8 /* ProximaNova-Light.otf */,
+				F0AB61EA2266018200626CC8 /* ProximaNova-LightItalic.otf */,
+				F0AB61E92266018200626CC8 /* ProximaNova-Regular.otf */,
+				F0AB61ED2266018300626CC8 /* ProximaNova-Semibold.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,10 +378,15 @@
 				F0AB61AB2264D85F00626CC8 /* Localizable.strings in Resources */,
 				F0AB61C02265135100626CC8 /* MessageCollectionViewCell.xib in Resources */,
 				F0AB61BC2264F6FD00626CC8 /* ProductCollectionViewCell.xib in Resources */,
+				F0AB61F02266024500626CC8 /* ProximaNova-LightItalic.otf in Resources */,
 				F0AB61DF22655D6C00626CC8 /* InfinityScrollRefreshView.xib in Resources */,
+				F0AB61EF2266024200626CC8 /* ProximaNova-Light.otf in Resources */,
 				F0AB61CF22653B5D00626CC8 /* reload.gif in Resources */,
 				F08338EB2264CA4C0052F90E /* Assets.xcassets in Resources */,
 				F0AB61DB22655D5000626CC8 /* PullToRefreshView.xib in Resources */,
+				F0AB61F12266024800626CC8 /* ProximaNova-Regular.otf in Resources */,
+				F0AB61EE2266023F00626CC8 /* ProximaNova-Bold.otf in Resources */,
+				F0AB61F22266024A00626CC8 /* ProximaNova-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,11 +486,13 @@
 				F0AB61BF2265135100626CC8 /* MessageCollectionViewCell.swift in Sources */,
 				F0AB61B52264EEB700626CC8 /* User.swift in Sources */,
 				F0AB61B32264E31100626CC8 /* Product.swift in Sources */,
-				F0AB61CB226524A000626CC8 /* Helper.swift in Sources */,
+				F0AB61CB226524A000626CC8 /* Color.swift in Sources */,
 				F08338E42264CA4B0052F90E /* AppDelegate.swift in Sources */,
 				F0AB61AF2264DE8300626CC8 /* HomeViewController.swift in Sources */,
+				F0AB61E32265F7DB00626CC8 /* Font.swift in Sources */,
 				F0AB61CD226524F700626CC8 /* APIClient.swift in Sources */,
 				F0AB61DD22655D6400626CC8 /* InfinityScrollRefreshView.swift in Sources */,
+				F0AB61E72265FB8A00626CC8 /* ProductDetailsViewController.swift in Sources */,
 				F0AB61D722655D3800626CC8 /* PullToRefreshExtensions.swift in Sources */,
 				F0AB61D922655D4600626CC8 /* PullToRefreshView.swift in Sources */,
 			);
