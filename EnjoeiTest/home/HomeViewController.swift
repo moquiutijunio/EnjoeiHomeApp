@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cartography
 
 enum ProductRequestStatus {
     case loading
@@ -17,30 +18,14 @@ enum ProductRequestStatus {
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     private let firstPathPage = "/vNWpzLB9"
     private let secondPathPage = "/X2r3iTxJ"
+    private var lastListIsShow = false
     
-    var productViewModels = [ProductViewModel]()
-    private var productRequestStatus: ProductRequestStatus = .loading {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
-            }
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        prepareCollectionView()
-        requestProductList()
-    }
-    
-    private func prepareCollectionView() {
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.alwaysBounceVertical = true
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = .clear
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -48,23 +33,94 @@ class HomeViewController: UIViewController {
         collectionView.register(UINib(nibName: MessageCollectionViewCell.nibName, bundle: nil), forCellWithReuseIdentifier: MessageCollectionViewCell.nibName)
         collectionView.register(UINib(nibName: LoadingCollectionViewCell.nibName, bundle: nil), forCellWithReuseIdentifier: LoadingCollectionViewCell.nibName)
         
-//        collectionView.ins_addInfinityScroll(withHeight: 54) {[weak self] (_) in
-//            guard let strongSelf = self else { return }
-//            strongSelf.presenter.collectionViewScrolledAtEnd()
-//        }
+        view.addSubview(collectionView)
+
+        constrain(view, collectionView, car_topLayoutGuide, car_bottomLayoutGuide) { (container, collection, topGuide, bottomGuide) in
+            collection.left == container.left
+            collection.right == container.right
+
+            if #available(iOS 11.0, *) {
+                collection.top == container.safeAreaLayoutGuide.top - 85
+                collection.bottom == container.safeAreaLayoutGuide.bottom
+
+            } else {
+                collection.top == topGuide.bottom - 65
+                collection.bottom == bottomGuide.top
+            }
+        }
         
-//        collectionView.ins_infiniteScrollBackgroundView.addSubview(infinityScrollIndicator)
-//        collectionView.ins_infiniteScrollBackgroundView.delegate = self
-//        collectionView.ins_setInfinityScrollEnabled(false)
+        return collectionView
+    }()
+    
+    var productViewModels = [ProductViewModel]()
+    private var productRequestStatus: ProductRequestStatus = .loading {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+                self?.updateInfinityScrollAndPullToRefresh()
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionView.addPullToRefreshToScrollView { [weak self] (_) in
+            self?.pullToRefreshAction()
+        }
+        
+        collectionView.addInfinityScrollRefreshView { [weak self] (_) in
+            self?.infinityScrollAction()
+        }
+        
+        requestProductList(path: firstPathPage, reloadViewModels: true)
+    }
+    
+    private func pullToRefreshAction() {
+        requestProductList(path: firstPathPage, reloadViewModels: true)
+    }
+    
+    private func infinityScrollAction() {
+        requestProductList(path: secondPathPage)
+    }
+    
+    private func updateInfinityScrollAndPullToRefresh() {
+        switch self.productRequestStatus {
+        case .success:
+            collectionView.ins_endPullToRefresh()
+            collectionView.ins_endInfinityScroll(withStoppingContentOffset: true)
+            if productViewModels.isEmpty {
+                collectionView.ins_setPull(toRefreshEnabled: true)
+                collectionView.ins_setInfinityScrollEnabled(false)
+            } else {
+                collectionView.ins_setPull(toRefreshEnabled: true)
+                if lastListIsShow {
+                    collectionView.ins_setInfinityScrollEnabled(false)
+                } else {
+                    collectionView.ins_setInfinityScrollEnabled(true)
+                }
+            }
+            
+        case .loading:
+            collectionView.ins_endPullToRefresh()
+            collectionView.ins_endInfinityScroll(withStoppingContentOffset: true)
+            collectionView.ins_setPull(toRefreshEnabled: false)
+            collectionView.ins_setInfinityScrollEnabled(false)
+            
+        case .failure,
+             .empty:
+            collectionView.ins_endPullToRefresh()
+            collectionView.ins_endInfinityScroll(withStoppingContentOffset: true)
+            collectionView.ins_setPull(toRefreshEnabled: true)
+            collectionView.ins_setInfinityScrollEnabled(false)
+        }
     }
 }
 
 extension HomeViewController {
     
-    private func requestProductList() {
-        productRequestStatus = .loading
-        
-        guard let url = URL(string: "\(APIClientHost.baseURLString)\(firstPathPage)") else {
+    private func requestProductList(path: String, reloadViewModels: Bool = false) {
+        guard let url = URL(string: "\(APIClientHost.baseURLString)\(path)") else {
             productRequestStatus = .failure(error: NSLocalizedString("message.error", comment: ""))
             return
         }
@@ -81,11 +137,18 @@ extension HomeViewController {
                         products.append(product)
                     }
                     
-                    self?.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
+                    if reloadViewModels {
+                        self?.productViewModels = products.map {ProductViewModel(product: $0)}
+                    } else {
+                        self?.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
+                    }
+                    
                     self?.productRequestStatus = .success
                 }
             }
         }.resume()
+        
+        self.lastListIsShow = !reloadViewModels
     }
 }
 
@@ -98,7 +161,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                 let pading: CGFloat = 6
 
                 let collectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                collectionViewFlowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width/2 - 10, height: 320)
+                collectionViewFlowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width/2 - 10, height: 300)
                 collectionViewFlowLayout.minimumLineSpacing = pading
                 collectionViewFlowLayout.minimumInteritemSpacing = pading
                 collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: pading, left: pading, bottom: pading, right: pading)
@@ -161,6 +224,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        switch productRequestStatus {
+        case .success:
+            print("TODO did tap \(productViewModels[indexPath.row].title)")
+            
+        default:
+            return
+        }
     }
 }

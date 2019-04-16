@@ -13,17 +13,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProductCollectionViewCell" customModule="EnjoeiTest" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="172" height="315"/>
+            <rect key="frame" x="0.0" y="0.0" width="172" height="300"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="172" height="315"/>
+                <rect key="frame" x="0.0" y="0.0" width="172" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xBD-c8-MAq">
-                        <rect key="frame" x="0.0" y="0.0" width="172" height="197.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="172" height="180"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="180" id="7C9-rz-V5J"/>
+                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJH-Ed-F1X">
-                        <rect key="frame" x="0.0" y="266" width="172" height="49"/>
+                        <rect key="frame" x="0.0" y="251" width="172" height="49"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svz-0n-pDH">
                                 <rect key="frame" x="86" y="0.0" width="0.0" height="49"/>
@@ -33,10 +36,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gO-KJ-s1v">
-                                <rect key="frame" x="0.0" y="0.0" width="86" height="49"/>
+                                <rect key="frame" x="0.0" y="0.0" width="87" height="49"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xvL-8h-Vc9">
-                                        <rect key="frame" x="28" y="9.5" width="30" height="30"/>
+                                        <rect key="frame" x="28.5" y="9.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ZAz-wg-rFv"/>
                                             <constraint firstAttribute="width" constant="30" id="kGP-pv-Fq0"/>
@@ -81,7 +84,7 @@
                             <constraint firstAttribute="bottom" secondItem="8gO-KJ-s1v" secondAttribute="bottom" id="1QZ-lZ-9sG"/>
                             <constraint firstItem="svz-0n-pDH" firstAttribute="centerX" secondItem="ZJH-Ed-F1X" secondAttribute="centerX" id="4Sc-Xf-UQi"/>
                             <constraint firstAttribute="trailing" secondItem="rMf-fm-0oT" secondAttribute="trailing" id="80E-Xv-WO5"/>
-                            <constraint firstItem="svz-0n-pDH" firstAttribute="leading" secondItem="8gO-KJ-s1v" secondAttribute="trailing" id="Dbj-xJ-M4z"/>
+                            <constraint firstItem="svz-0n-pDH" firstAttribute="leading" secondItem="8gO-KJ-s1v" secondAttribute="trailing" constant="-1" id="Dbj-xJ-M4z"/>
                             <constraint firstItem="rMf-fm-0oT" firstAttribute="top" secondItem="ZJH-Ed-F1X" secondAttribute="top" id="FWS-vf-uy4"/>
                             <constraint firstAttribute="height" constant="49" id="IuT-ul-4ox"/>
                             <constraint firstItem="rMf-fm-0oT" firstAttribute="leading" secondItem="svz-0n-pDH" secondAttribute="trailing" id="anN-ED-4bQ"/>
@@ -93,13 +96,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4s-Pg-VqJ">
-                        <rect key="frame" x="12" y="207.5" width="148" height="19.5"/>
+                        <rect key="frame" x="12" y="190" width="148" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plx-rU-lLo">
-                        <rect key="frame" x="12" y="233" width="148" height="17"/>
+                        <rect key="frame" x="12" y="218" width="148" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -122,7 +125,7 @@
                 <constraint firstItem="ZJH-Ed-F1X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zNN-pB-b0X"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="101" height="266"/>
+            <size key="customSize" width="101" height="250"/>
             <connections>
                 <outlet property="avatarContainerView" destination="8gO-KJ-s1v" id="u1X-Yc-tLL"/>
                 <outlet property="avatarImageView" destination="xvL-8h-Vc9" id="FzM-pe-UW5"/>
@@ -133,7 +136,7 @@
                 <outlet property="photoImageView" destination="xBD-c8-MAq" id="raY-WE-Mqc"/>
                 <outlet property="titleLabel" destination="f4s-Pg-VqJ" id="XgL-LA-WRO"/>
             </connections>
-            <point key="canvasLocation" x="-1309.5999999999999" y="136.73163418290855"/>
+            <point key="canvasLocation" x="-1310.4000000000001" y="129.08545727136433"/>
         </collectionViewCell>
     </objects>
 </document>

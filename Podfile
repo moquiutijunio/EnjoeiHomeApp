@@ -8,10 +8,12 @@ target 'EnjoeiTest' do
     
     # Pods for EnjoeiTest
     
+    pod 'Cartography'
+    pod 'INSPullToRefresh'
     pod 'Kingfisher'
     
     
-    swift4 = ['Kingfisher']
+    swift4 = ['Cartography', 'Kingfisher']
     
     post_install do |installer|
         installer.pods_project.targets.each do |target|

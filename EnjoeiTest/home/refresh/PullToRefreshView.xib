@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="dby-3h-oDk" customClass="PullToRefreshView" customModule="EnjoeiTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-Zp-tye">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="172" id="wlj-jl-v2n"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QDB-DN-z7v" firstAttribute="trailing" secondItem="c2P-Zp-tye" secondAttribute="trailing" id="FnE-MY-vwR"/>
+                <constraint firstAttribute="bottom" secondItem="c2P-Zp-tye" secondAttribute="bottom" id="aVy-B2-uIi"/>
+                <constraint firstItem="c2P-Zp-tye" firstAttribute="top" secondItem="dby-3h-oDk" secondAttribute="top" id="w9P-cI-C1L"/>
+                <constraint firstItem="c2P-Zp-tye" firstAttribute="leading" secondItem="QDB-DN-z7v" secondAttribute="leading" id="yfh-PV-1iY"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="QDB-DN-z7v"/>
+            <connections>
+                <outlet property="gifImageView" destination="c2P-Zp-tye" id="02y-Zx-f75"/>
+            </connections>
+            <point key="canvasLocation" x="620.79999999999995" y="412.89355322338832"/>
+        </view>
+    </objects>
+</document>

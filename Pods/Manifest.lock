@@ -1,16 +1,24 @@
 PODS:
+  - Cartography (3.1.0)
+  - INSPullToRefresh (1.2.0)
   - Kingfisher (5.2.0)
 
 DEPENDENCIES:
+  - Cartography
+  - INSPullToRefresh
   - Kingfisher
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Cartography
+    - INSPullToRefresh
     - Kingfisher
 
 SPEC CHECKSUMS:
+  Cartography: 1988b7578871a56c036e7af17195cb2190edf18c
+  INSPullToRefresh: d34f0046ccca6b32f6386f053d730ef41b3f35b7
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
 
-PODFILE CHECKSUM: 2defae0178899e377f37c8d13a7d5174b3955eb1
+PODFILE CHECKSUM: d4e6913c1fa7f32c58c527d7ae06f1a1cadb336e
 
 COCOAPODS: 1.5.3

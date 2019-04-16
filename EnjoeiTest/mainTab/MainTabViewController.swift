@@ -10,7 +10,7 @@ import UIKit
 
 class MainTabViewController: UITabBarController {
     
-    private lazy var homeViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
+    private lazy var homeViewController = HomeViewController()
     private lazy var searchViewController = UIViewController()
     private lazy var uploadViewController = UIViewController()
     private lazy var inboxViewController = UIViewController()

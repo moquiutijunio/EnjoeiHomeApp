@@ -11,12 +11,13 @@ import Kingfisher
 
 class ProductViewModel: NSObject {
     
-    private let product: Product
+    let product: Product
     let title: String
     let details: String
     let likeCount: String
     let userAvatarURL: URL
     let photoURL: URL?
+    var attributedText: NSMutableAttributedString?
     
     init(product: Product) {
         self.product = product
@@ -25,6 +26,15 @@ class ProductViewModel: NSObject {
         self.likeCount = "\(product.likesCount ?? 0)"
         self.userAvatarURL = product.userImage.imageURL
         self.photoURL = product.images.first?.imageURL
+        
+        super.init()
+        
+        let text = self.details
+        attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: text))
+        if let size = product.size {
+            let range = (text as NSString).range(of: "- tam \(size)")
+            attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray, range: range)
+        }
     }
 }
 
@@ -68,6 +78,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         
         detailsLabel.font = UIFont.systemFont(ofSize: 14) //TODO verificar a font correta
         detailsLabel.textAlignment = .center
+        detailsLabel.textColor = .primaryColor
         
         avatarImageView.backgroundColor = .lightGray
         avatarImageView.contentMode = .scaleAspectFit
@@ -85,6 +96,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         likeCountLabel.text = viewModel.likeCount
         avatarImageView.kf.setImage(with: viewModel.userAvatarURL)
         photoImageView.kf.setImage(with: viewModel.photoURL)
+        detailsLabel.attributedText = viewModel.attributedText
         
         self.viewModel = viewModel
     }

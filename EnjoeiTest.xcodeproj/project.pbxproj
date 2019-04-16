@@ -16,7 +16,6 @@
 		F0AB61A42264CC0500626CC8 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61A32264CC0500626CC8 /* MainTabViewController.swift */; };
 		F0AB61AB2264D85F00626CC8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61AA2264D85F00626CC8 /* Localizable.strings */; };
 		F0AB61AF2264DE8300626CC8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61AD2264DE8300626CC8 /* HomeViewController.swift */; };
-		F0AB61B02264DE8300626CC8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61AE2264DE8300626CC8 /* HomeViewController.xib */; };
 		F0AB61B32264E31100626CC8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61B22264E31100626CC8 /* Product.swift */; };
 		F0AB61B52264EEB700626CC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61B42264EEB700626CC8 /* User.swift */; };
 		F0AB61B72264EEC100626CC8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61B62264EEC100626CC8 /* Image.swift */; };
@@ -29,6 +28,13 @@
 		F0AB61C7226515D500626CC8 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61C6226515D500626CC8 /* BaseCollectionViewCell.swift */; };
 		F0AB61CB226524A000626CC8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61CA226524A000626CC8 /* Helper.swift */; };
 		F0AB61CD226524F700626CC8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61CC226524F700626CC8 /* APIClient.swift */; };
+		F0AB61CF22653B5D00626CC8 /* reload.gif in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61CE22653B5C00626CC8 /* reload.gif */; };
+		F0AB61D722655D3800626CC8 /* PullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61D622655D3800626CC8 /* PullToRefreshExtensions.swift */; };
+		F0AB61D922655D4600626CC8 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61D822655D4600626CC8 /* PullToRefreshView.swift */; };
+		F0AB61DB22655D5000626CC8 /* PullToRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61DA22655D5000626CC8 /* PullToRefreshView.xib */; };
+		F0AB61DD22655D6400626CC8 /* InfinityScrollRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61DC22655D6400626CC8 /* InfinityScrollRefreshView.swift */; };
+		F0AB61DF22655D6C00626CC8 /* InfinityScrollRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AB61DE22655D6C00626CC8 /* InfinityScrollRefreshView.xib */; };
+		F0AB61E12265693C00626CC8 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AB61E02265693C00626CC8 /* iOSDevCenters+GIF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +65,6 @@
 		F0AB61A32264CC0500626CC8 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		F0AB61AA2264D85F00626CC8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F0AB61AD2264DE8300626CC8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		F0AB61AE2264DE8300626CC8 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		F0AB61B22264E31100626CC8 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F0AB61B42264EEB700626CC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F0AB61B62264EEC100626CC8 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -72,6 +77,13 @@
 		F0AB61C6226515D500626CC8 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0AB61CA226524A000626CC8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F0AB61CC226524F700626CC8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F0AB61CE22653B5C00626CC8 /* reload.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = reload.gif; sourceTree = "<group>"; };
+		F0AB61D622655D3800626CC8 /* PullToRefreshExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshExtensions.swift; sourceTree = "<group>"; };
+		F0AB61D822655D4600626CC8 /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		F0AB61DA22655D5000626CC8 /* PullToRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PullToRefreshView.xib; sourceTree = "<group>"; };
+		F0AB61DC22655D6400626CC8 /* InfinityScrollRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityScrollRefreshView.swift; sourceTree = "<group>"; };
+		F0AB61DE22655D6C00626CC8 /* InfinityScrollRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfinityScrollRefreshView.xib; sourceTree = "<group>"; };
+		F0AB61E02265693C00626CC8 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +157,7 @@
 				F08338E32264CA4B0052F90E /* AppDelegate.swift */,
 				F08338EA2264CA4C0052F90E /* Assets.xcassets */,
 				F08338EC2264CA4C0052F90E /* LaunchScreen.storyboard */,
+				F0AB61CE22653B5C00626CC8 /* reload.gif */,
 				F08338EF2264CA4C0052F90E /* Info.plist */,
 				F0AB61AA2264D85F00626CC8 /* Localizable.strings */,
 			);
@@ -173,6 +186,7 @@
 			children = (
 				F0AB61CC226524F700626CC8 /* APIClient.swift */,
 				F0AB61CA226524A000626CC8 /* Helper.swift */,
+				F0AB61E02265693C00626CC8 /* iOSDevCenters+GIF.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -180,9 +194,9 @@
 		F0AB61AC2264DE6400626CC8 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				F0AB61D522655CFF00626CC8 /* refresh */,
 				F0AB61B82264F6D800626CC8 /* viewCell */,
 				F0AB61AD2264DE8300626CC8 /* HomeViewController.swift */,
-				F0AB61AE2264DE8300626CC8 /* HomeViewController.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -216,6 +230,18 @@
 				F0AB61C6226515D500626CC8 /* BaseCollectionViewCell.swift */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		F0AB61D522655CFF00626CC8 /* refresh */ = {
+			isa = PBXGroup;
+			children = (
+				F0AB61D622655D3800626CC8 /* PullToRefreshExtensions.swift */,
+				F0AB61D822655D4600626CC8 /* PullToRefreshView.swift */,
+				F0AB61DA22655D5000626CC8 /* PullToRefreshView.xib */,
+				F0AB61DC22655D6400626CC8 /* InfinityScrollRefreshView.swift */,
+				F0AB61DE22655D6C00626CC8 /* InfinityScrollRefreshView.xib */,
+			);
+			path = refresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,8 +333,10 @@
 				F0AB61AB2264D85F00626CC8 /* Localizable.strings in Resources */,
 				F0AB61C02265135100626CC8 /* MessageCollectionViewCell.xib in Resources */,
 				F0AB61BC2264F6FD00626CC8 /* ProductCollectionViewCell.xib in Resources */,
+				F0AB61DF22655D6C00626CC8 /* InfinityScrollRefreshView.xib in Resources */,
+				F0AB61CF22653B5D00626CC8 /* reload.gif in Resources */,
 				F08338EB2264CA4C0052F90E /* Assets.xcassets in Resources */,
-				F0AB61B02264DE8300626CC8 /* HomeViewController.xib in Resources */,
+				F0AB61DB22655D5000626CC8 /* PullToRefreshView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,12 +359,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EnjoeiTest/Pods-EnjoeiTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
+				"${BUILT_PRODUCTS_DIR}/INSPullToRefresh/INSPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0AB61B72264EEC100626CC8 /* Image.swift in Sources */,
+				F0AB61E12265693C00626CC8 /* iOSDevCenters+GIF.swift in Sources */,
 				F0AB61BB2264F6FD00626CC8 /* ProductCollectionViewCell.swift in Sources */,
 				F0AB61C32265153F00626CC8 /* LoadingCollectionViewCell.swift in Sources */,
 				F0AB61C7226515D500626CC8 /* BaseCollectionViewCell.swift in Sources */,
@@ -407,6 +440,9 @@
 				F08338E42264CA4B0052F90E /* AppDelegate.swift in Sources */,
 				F0AB61AF2264DE8300626CC8 /* HomeViewController.swift in Sources */,
 				F0AB61CD226524F700626CC8 /* APIClient.swift in Sources */,
+				F0AB61DD22655D6400626CC8 /* InfinityScrollRefreshView.swift in Sources */,
+				F0AB61D722655D3800626CC8 /* PullToRefreshExtensions.swift in Sources */,
+				F0AB61D922655D4600626CC8 /* PullToRefreshView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
