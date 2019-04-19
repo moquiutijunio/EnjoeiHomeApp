@@ -10,6 +10,8 @@
 		4CE5232705053A91B61EC74C /* Pods_EnjoeiTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC06879B911B60BDB3BB1127 /* Pods_EnjoeiTest.framework */; };
 		DD50AC75D53CE32827947001 /* libPods-EnjoeiTestUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9198F75324E5F9F0B596618 /* libPods-EnjoeiTestUITests.a */; };
 		F02DE8D0226A416E00686D4C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DE8CF226A416E00686D4C /* String.swift */; };
+		F02DE8D4226A6BCD00686D4C /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DE8D3226A6BCD00686D4C /* HomeHeaderView.swift */; };
+		F02DE8D6226A6BD600686D4C /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02DE8D5226A6BD600686D4C /* HomeHeaderView.xib */; };
 		F08338E42264CA4B0052F90E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08338E32264CA4B0052F90E /* AppDelegate.swift */; };
 		F08338EB2264CA4C0052F90E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F08338EA2264CA4C0052F90E /* Assets.xcassets */; };
 		F08338EE2264CA4C0052F90E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08338EC2264CA4C0052F90E /* LaunchScreen.storyboard */; };
@@ -69,6 +71,8 @@
 		B9198F75324E5F9F0B596618 /* libPods-EnjoeiTestUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EnjoeiTestUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC06879B911B60BDB3BB1127 /* Pods_EnjoeiTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EnjoeiTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02DE8CF226A416E00686D4C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F02DE8D3226A6BCD00686D4C /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		F02DE8D5226A6BD600686D4C /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
 		F08338E02264CA4B0052F90E /* EnjoeiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoeiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F08338E32264CA4B0052F90E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F08338EA2264CA4C0052F90E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -160,6 +164,15 @@
 				F0AB61CC226524F700626CC8 /* APIClient.swift */,
 			);
 			path = ApiClient;
+			sourceTree = "<group>";
+		};
+		F02DE8D2226A6BA100686D4C /* header */ = {
+			isa = PBXGroup;
+			children = (
+				F02DE8D3226A6BCD00686D4C /* HomeHeaderView.swift */,
+				F02DE8D5226A6BD600686D4C /* HomeHeaderView.xib */,
+			);
+			path = header;
 			sourceTree = "<group>";
 		};
 		F08338D72264CA4B0052F90E = {
@@ -270,6 +283,7 @@
 		F0AB61D522655CFF00626CC8 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F02DE8D2226A6BA100686D4C /* header */,
 				F0AB61FB22661A3A00626CC8 /* pullToRefresh */,
 				F0AB61FA22661A3000626CC8 /* infinityScroll */,
 			);
@@ -478,6 +492,7 @@
 				F08338EE2264CA4C0052F90E /* LaunchScreen.storyboard in Resources */,
 				F0AB61AB2264D85F00626CC8 /* Localizable.strings in Resources */,
 				F0AB61C02265135100626CC8 /* MessageCollectionViewCell.xib in Resources */,
+				F02DE8D6226A6BD600686D4C /* HomeHeaderView.xib in Resources */,
 				F0AB62092266218200626CC8 /* PhotoHeaderCollectionViewCell.xib in Resources */,
 				F0AB620E226641FE00626CC8 /* ProductPriceView.xib in Resources */,
 				F0AB61BC2264F6FD00626CC8 /* ProductCollectionViewCell.xib in Resources */,
@@ -592,6 +607,7 @@
 				F0AB61BF2265135100626CC8 /* MessageCollectionViewCell.swift in Sources */,
 				F0AB62102266420C00626CC8 /* ProductPriceViewModel.swift in Sources */,
 				F0AB61B52264EEB700626CC8 /* User.swift in Sources */,
+				F02DE8D4226A6BCD00686D4C /* HomeHeaderView.swift in Sources */,
 				F0AB61B32264E31100626CC8 /* Product.swift in Sources */,
 				F0AB61CB226524A000626CC8 /* Color.swift in Sources */,
 				F08338E42264CA4B0052F90E /* AppDelegate.swift in Sources */,

@@ -22,6 +22,10 @@ class HomeViewController: UIViewController {
     private let firstPathPage = "/vNWpzLB9"
     private let nextPathPage = "/X2r3iTxJ"
     
+    private lazy var homeHeaderView: HomeHeaderView = {
+        return HomeHeaderView.instantiateFromNib()
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.alwaysBounceVertical = true
@@ -82,17 +86,25 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     private func addSubviews() {
+        
+        view.addSubview(homeHeaderView)
         view.addSubview(collectionView)
-        constrain(view, collectionView) { (container, collection) in
+        
+        constrain(view, collectionView, homeHeaderView) { (container, collection, headerView) in
+            headerView.left == container.left
+            headerView.right == container.right
+            headerView.height == 64
+            
+            collection.top == headerView.bottom
             collection.left == container.left
             collection.right == container.right
             
             if #available(iOS 11.0, *) {
-                collection.top == container.safeAreaLayoutGuide.top
+                headerView.top == container.safeAreaLayoutGuide.top
                 collection.bottom == container.safeAreaLayoutGuide.bottom
                 
             } else {
-                collection.top == container.top
+                headerView.top == container.top
                 collection.bottom == container.bottom
             }
         }
