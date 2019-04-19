@@ -119,24 +119,40 @@ extension HomeViewController {
         }
         
         URLSession.shared.dataTask(with: url) {[weak self] (data, response, error) in
+            guard let data = data else {
+                self?.productRequestStatus = .failure(error: error?.localizedDescription ?? NSLocalizedString("message.error", comment: ""))
+                return
+            }
             
-            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary {
                 if let productsJson = jsonObj!.value(forKey: "products") as? NSArray {
-        
+                    
                     var products = [Product]()
                     for productJson in productsJson {
-                        guard let productJson = productJson as? [String: Any] else { break }
-                        guard let product = Product(json: productJson) else { break }
-                        products.append(product)
+                        
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: productJson, options: .prettyPrinted)
+                            let product = try JSONDecoder().decode(Product.self, from: jsonData)
+                            products.append(product)
+                            
+                        } catch {
+                            print(error.localizedDescription)
+                        }
                     }
-                    
-                    if reloadViewModels {
-                        self?.productViewModels = products.map {ProductViewModel(product: $0)}
+
+                    if !products.isEmpty {
+                        if reloadViewModels {
+                            self?.productViewModels = products.map {ProductViewModel(product: $0)}
+                        } else {
+                            self?.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
+                        }
+                        
+                        self?.productRequestStatus = .success
+                        
                     } else {
-                        self?.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
+                        self?.productRequestStatus = .failure(error: NSLocalizedString("message.error", comment: ""))
+                        
                     }
-                    
-                    self?.productRequestStatus = .success
                 }
             }
         }.resume()

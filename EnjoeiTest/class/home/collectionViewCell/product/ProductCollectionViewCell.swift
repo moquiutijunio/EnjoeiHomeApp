@@ -66,8 +66,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         titleLabel.text = viewModel.title
         detailsLabel.text = viewModel.details
         likeCountLabel.text = viewModel.likeCount
-        avatarImageView.kf.setImage(with: viewModel.userAvatarURL)
-        photoImageView.kf.setImage(with: viewModel.photoURL)
         detailsLabel.attributedText = viewModel.attributedText
+        photoImageView.kf.setImage(with: viewModel.photoURL)
+        avatarImageView.kf.setImage(with: viewModel.userAvatarURL)
     }
 }

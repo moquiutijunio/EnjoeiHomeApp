@@ -6,15 +6,11 @@
 //  Copyright © 2019 Junio Moquiuti. All rights reserved.
 //
 
-struct User {
+struct User: Codable {
+    
     var image: Image
     
-    init?(json: [String: Any]) {
-        guard let imageJson = json["avatar"] as? [String: Any],
-            let image = Image(json: imageJson) else {
-                return nil
-        }
-        
-        self.image = image
+    enum CodingKeys: String, CodingKey {
+        case image = "avatar"
     }
 }

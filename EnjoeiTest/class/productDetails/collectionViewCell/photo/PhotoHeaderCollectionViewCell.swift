@@ -25,7 +25,7 @@ class PhotoHeaderCollectionViewCell: BaseCollectionViewCell {
         photoImageView.clipsToBounds = true
     }
     
-    func bindIn(imageURL: URL) {
+    func bindIn(imageURL: URL?) {
         photoImageView.kf.setImage(with: imageURL)
     }
 }

@@ -14,7 +14,7 @@ class ProductViewModel: NSObject {
     let title: String
     let details: String
     let likeCount: String
-    let userAvatarURL: URL
+    let userAvatarURL: URL?
     let photoURL: URL?
     var attributedText: NSMutableAttributedString?
     
@@ -23,8 +23,8 @@ class ProductViewModel: NSObject {
         self.title = product.title
         self.details = product.size != nil ? "R$ \(product.price) - tam \(product.size!)" : "R$ \(product.price)"
         self.likeCount = "\(product.likesCount ?? 0)"
-        self.userAvatarURL = product.userImage.imageURL
-        self.photoURL = product.images.first?.imageURL
+        self.userAvatarURL = product.user.image.imageId.convertToURLUsing(resolution: .mini)
+        self.photoURL = product.images.first?.imageId.convertToURLUsing(resolution: .medium)
         
         super.init()
         

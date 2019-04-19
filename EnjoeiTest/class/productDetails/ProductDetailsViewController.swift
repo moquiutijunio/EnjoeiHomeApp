@@ -149,7 +149,7 @@ extension ProductDetailsViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoHeaderCollectionViewCell.nibName, for: indexPath) as! PhotoHeaderCollectionViewCell
-        cell.bindIn(imageURL: currentProduct.images[indexPath.row].imageURL)
+        cell.bindIn(imageURL: currentProduct.images[indexPath.row].imageId.convertToURLUsing(resolution: .medium))
         return cell
     }
 }

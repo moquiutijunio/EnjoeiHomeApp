@@ -6,36 +6,27 @@
 //  Copyright © 2019 Junio Moquiuti. All rights reserved.
 //
 
-struct Product {
+struct Product: Codable {
+
     var title: String
     var images: [Image]
     var minimumPrice: Int
     var price: Int
-    var userImage: Image
+    var user: User
     var likesCount: Int?
     var size: String?
     var discountPercentage: Int
     var maximumInstallment: Int
     
-    init?(json: [String: Any]) {
-        guard let title = json["seo_title"] as? String,
-            let minimumPrice = json["minimum_price_integer"] as? Int,
-            let price = json["original_price_integer"] as? Int,
-            let userJson = json["user"] as? [String: Any],
-            let userAvatarJson = userJson["avatar"] as? [String: Any],
-            let userImage = Image(json: userAvatarJson),
-            let imagesPathsJson = json["photos"] as? [[String: Any]] else {
-                return nil
-        }
-        
-        self.title = title
-        self.minimumPrice = minimumPrice
-        self.price = price
-        self.userImage = userImage
-        self.likesCount = json["likes_count"] as? Int ?? 0
-        self.size = json["size"] as? String
-        self.images = Image.mapArray(imagesPathsJson: imagesPathsJson)
-        self.discountPercentage = json["discount_percentage"] as? Int ?? 0
-        self.maximumInstallment = json["maximum_installment"] as? Int ?? 0
+    enum CodingKeys: String, CodingKey {
+        case title = "seo_title"
+        case images = "photos"
+        case minimumPrice = "minimum_price_integer"
+        case price = "original_price_integer"
+        case user = "user"
+        case likesCount = "likes_count"
+        case size = "size"
+        case discountPercentage = "discount_percentage"
+        case maximumInstallment = "maximum_installment"
     }
 }
