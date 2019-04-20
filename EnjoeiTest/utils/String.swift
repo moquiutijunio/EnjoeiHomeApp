@@ -18,6 +18,6 @@ enum ImageResolutions: String {
 extension String {
     
     func convertToURLUsing(resolution: ImageResolutions) -> URL? {
-        return URL(string: "\(APIClientHost.photoBaseURLString)/\(resolution.rawValue)/\(self).jpg")
+        return URL(string: "\(APIClient.photoBaseURLString)/\(resolution.rawValue)/\(self).jpg")
     }
 }

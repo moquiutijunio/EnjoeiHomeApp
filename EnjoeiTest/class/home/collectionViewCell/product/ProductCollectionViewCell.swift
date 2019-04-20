@@ -19,6 +19,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var likeImageView: UIImageView!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var likeContainerView: UIView!
+    @IBOutlet weak var likeWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,7 +59,10 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         likeImageView.contentMode = .scaleAspectFit
         
         likeCountLabel.font = UIFont.proximaNovaRegular(ofSize: 14)
+        likeCountLabel.textAlignment = .left
         likeCountLabel.textColor = .gray2
+        
+        likeWidthConstraint.constant = (likeContainerView.frame.width/2) + 6
     }
     
     func bindIn(viewModel: ProductViewModel) {

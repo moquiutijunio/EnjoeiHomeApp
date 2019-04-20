@@ -12,6 +12,8 @@
 		F02DE8D0226A416E00686D4C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DE8CF226A416E00686D4C /* String.swift */; };
 		F02DE8D4226A6BCD00686D4C /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DE8D3226A6BCD00686D4C /* HomeHeaderView.swift */; };
 		F02DE8D6226A6BD600686D4C /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02DE8D5226A6BD600686D4C /* HomeHeaderView.xib */; };
+		F07E8993226AAEE600D14CB5 /* RequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E8992226AAEE600D14CB5 /* RequestResponse.swift */; };
+		F07E8995226BA64300D14CB5 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E8994226BA64300D14CB5 /* MessageViewModel.swift */; };
 		F08338E42264CA4B0052F90E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08338E32264CA4B0052F90E /* AppDelegate.swift */; };
 		F08338EB2264CA4C0052F90E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F08338EA2264CA4C0052F90E /* Assets.xcassets */; };
 		F08338EE2264CA4C0052F90E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08338EC2264CA4C0052F90E /* LaunchScreen.storyboard */; };
@@ -73,6 +75,8 @@
 		F02DE8CF226A416E00686D4C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F02DE8D3226A6BCD00686D4C /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		F02DE8D5226A6BD600686D4C /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
+		F07E8992226AAEE600D14CB5 /* RequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponse.swift; sourceTree = "<group>"; };
+		F07E8994226BA64300D14CB5 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		F08338E02264CA4B0052F90E /* EnjoeiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoeiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F08338E32264CA4B0052F90E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F08338EA2264CA4C0052F90E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 			children = (
 				F0AB61D622655D3800626CC8 /* PullToRefreshExtensions.swift */,
 				F0AB61E02265693C00626CC8 /* iOSDevCenters+GIF.swift */,
+				F07E8992226AAEE600D14CB5 /* RequestResponse.swift */,
 				F02DE8CF226A416E00686D4C /* String.swift */,
 				F0AB61CA226524A000626CC8 /* Color.swift */,
 				F0AB61E22265F7DB00626CC8 /* Font.swift */,
@@ -345,6 +350,7 @@
 		F0AB61F9226619FF00626CC8 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				F07E8994226BA64300D14CB5 /* MessageViewModel.swift */,
 				F0AB61BD2265135100626CC8 /* MessageCollectionViewCell.swift */,
 				F0AB61BE2265135100626CC8 /* MessageCollectionViewCell.xib */,
 			);
@@ -530,6 +536,9 @@
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/INSPullToRefresh/INSPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -538,6 +547,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -605,6 +617,7 @@
 				F0AB61F42266198F00626CC8 /* ProductViewModel.swift in Sources */,
 				F0AB61A42264CC0500626CC8 /* MainTabViewController.swift in Sources */,
 				F0AB61BF2265135100626CC8 /* MessageCollectionViewCell.swift in Sources */,
+				F07E8995226BA64300D14CB5 /* MessageViewModel.swift in Sources */,
 				F0AB62102266420C00626CC8 /* ProductPriceViewModel.swift in Sources */,
 				F0AB61B52264EEB700626CC8 /* User.swift in Sources */,
 				F02DE8D4226A6BCD00686D4C /* HomeHeaderView.swift in Sources */,
@@ -613,6 +626,7 @@
 				F08338E42264CA4B0052F90E /* AppDelegate.swift in Sources */,
 				F0AB61AF2264DE8300626CC8 /* HomeViewController.swift in Sources */,
 				F0AB61E32265F7DB00626CC8 /* Font.swift in Sources */,
+				F07E8993226AAEE600D14CB5 /* RequestResponse.swift in Sources */,
 				F0AB61CD226524F700626CC8 /* APIClient.swift in Sources */,
 				F0AB61DD22655D6400626CC8 /* InfinityScrollRefreshView.swift in Sources */,
 				F0AB62082266218200626CC8 /* PhotoHeaderCollectionViewCell.swift in Sources */,

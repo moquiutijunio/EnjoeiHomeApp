@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 import Cartography
 
 enum ProductRequestStatus {
@@ -18,16 +19,26 @@ enum ProductRequestStatus {
 
 class HomeViewController: UIViewController {
     
+    private var disposeBag: DisposeBag!
+    private let apiClient = APIClient()
     
-    private let firstPathPage = "/vNWpzLB9"
-    private let nextPathPage = "/X2r3iTxJ"
+    private var currentPage = 1
+    private var productViewModels = [ProductViewModel]()
+    private var productRequestStatus: ProductRequestStatus = .loading {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+                self?.updateInfinityScrollAndPullToRefresh()
+            }
+        }
+    }
     
     private lazy var homeHeaderView: HomeHeaderView = {
         return HomeHeaderView.instantiateFromNib()
     }()
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .clear
         
@@ -39,17 +50,7 @@ class HomeViewController: UIViewController {
         
         return collectionView
     }()
-    
-    var productViewModels = [ProductViewModel]()
-    private var productRequestStatus: ProductRequestStatus = .loading {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
-                self?.updateInfinityScrollAndPullToRefresh()
-            }
-        }
-    }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -68,6 +69,7 @@ class HomeViewController: UIViewController {
         }
         
         pullToRefreshAction()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +81,48 @@ class HomeViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    private func bind() {
+        disposeBag = DisposeBag()
+        
+        apiClient.productListRequestResponse
+            .bind {[weak self] (response) in
+                guard let self = self else { return }
+                
+                switch response {
+                case .loading:
+                    if self.productViewModels.isEmpty {
+                        self.productRequestStatus = .loading
+                    }
+                    
+                case .success(let products):
+                    if self.currentPage == 1 {
+                        self.productViewModels = products.map {ProductViewModel(product: $0)}
+                    } else {
+                        self.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
+                    }
+                    
+                    self.productRequestStatus = .success
+                    
+                case .failure(let error):
+                    if self.productViewModels.isEmpty {
+                        self.productRequestStatus = .failure(error: error)
+                    } else {
+                        self.showAlertWithError(error)
+                    }
+                    
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    fileprivate func showAlertWithError(_ message: String) {
+        let alertView = UIAlertController(title: NSLocalizedString("error.title", comment: ""), message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "").uppercased(), style: .default, handler: nil))
+        present(alertView, animated: true, completion: nil)
     }
 }
 
@@ -93,7 +137,6 @@ extension HomeViewController {
         constrain(view, collectionView, homeHeaderView) { (container, collection, headerView) in
             headerView.left == container.left
             headerView.right == container.right
-            headerView.height == 64
             
             collection.top == headerView.bottom
             collection.left == container.left
@@ -104,7 +147,7 @@ extension HomeViewController {
                 collection.bottom == container.safeAreaLayoutGuide.bottom
                 
             } else {
-                headerView.top == container.top
+                headerView.top == container.top + 20
                 collection.bottom == container.bottom
             }
         }
@@ -121,67 +164,19 @@ extension HomeViewController {
     }
 }
 
-// MARK: - Request method
-extension HomeViewController {
-    
-    private func requestProductList(path: String, reloadViewModels: Bool = false) {
-        guard let url = URL(string: "\(APIClientHost.baseURLString)\(path)") else {
-            productRequestStatus = .failure(error: NSLocalizedString("message.error", comment: ""))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) {[weak self] (data, response, error) in
-            guard let data = data else {
-                self?.productRequestStatus = .failure(error: error?.localizedDescription ?? NSLocalizedString("message.error", comment: ""))
-                return
-            }
-            
-            if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary {
-                if let productsJson = jsonObj!.value(forKey: "products") as? NSArray {
-                    
-                    var products = [Product]()
-                    for productJson in productsJson {
-                        
-                        do {
-                            let jsonData = try JSONSerialization.data(withJSONObject: productJson, options: .prettyPrinted)
-                            let product = try JSONDecoder().decode(Product.self, from: jsonData)
-                            products.append(product)
-                            
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    }
-
-                    if !products.isEmpty {
-                        if reloadViewModels {
-                            self?.productViewModels = products.map {ProductViewModel(product: $0)}
-                        } else {
-                            self?.productViewModels.append(contentsOf: products.map {ProductViewModel(product: $0)})
-                        }
-                        
-                        self?.productRequestStatus = .success
-                        
-                    } else {
-                        self?.productRequestStatus = .failure(error: NSLocalizedString("message.error", comment: ""))
-                        
-                    }
-                }
-            }
-        }.resume()
-    }
-}
-
 // MARK: - Pull to refresh and infinity scroll methods
 extension HomeViewController {
     
     private func pullToRefreshAction() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {[unowned self] in
-            self.requestProductList(path: self.firstPathPage, reloadViewModels: true)
+        currentPage = 1
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.apiClient.getProductList(currentPage: self.currentPage)
         }
     }
     
     private func infinityScrollAction() {
-        requestProductList(path: nextPathPage)
+        currentPage += 1
+        apiClient.getProductList(currentPage: currentPage)
     }
     
     private func updateInfinityScrollAndPullToRefresh() {
@@ -213,6 +208,15 @@ extension HomeViewController {
     }
 }
 
+// MARK: - MessageViewModelCallbackProtocol
+extension HomeViewController: MessageViewModelCallbackProtocol {
+    
+    func tryAgain() {
+        productRequestStatus = .loading
+        apiClient.getProductList(currentPage: currentPage)
+    }
+}
+
 // MARK: - UICollectionView delegate flow layout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
@@ -220,10 +224,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
             switch productRequestStatus {
             case .success:
-                let pading: CGFloat = 6
+                let pading: CGFloat = 10
 
                 let collectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                collectionViewFlowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width/2 - 10, height: 300)
+                collectionViewFlowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width/2 - 15, height: 300)
                 collectionViewFlowLayout.minimumLineSpacing = pading
                 collectionViewFlowLayout.minimumInteritemSpacing = pading
                 collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: pading, left: pading, bottom: pading, right: pading)
@@ -231,15 +235,17 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
                 return UIEdgeInsets(top: pading, left: pading, bottom: pading, right: pading)
 
-            case .failure,
-                 .empty:
+            case .failure:
                 let collectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                collectionViewFlowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 200)
+                collectionViewFlowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 160)
                 return UIEdgeInsets()
 
             case .loading:
                 let collectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
                 collectionViewFlowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: 69)
+                return UIEdgeInsets()
+                
+            default:
                 return UIEdgeInsets()
             }
     }
@@ -275,13 +281,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         case .failure(let error):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCollectionViewCell.nibName, for: indexPath) as! MessageCollectionViewCell
-            cell.bindIn(message: error)
+            cell.bindIn(viewModel: MessageViewModel(title: error, callback: self))
             return cell
             
-        case .empty:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCollectionViewCell.nibName, for: indexPath) as! MessageCollectionViewCell
-            cell.bindIn(message: NSLocalizedString("product.empty", comment: ""))
-            return cell
+        default:
+            return UICollectionViewCell()
             
         }
     }

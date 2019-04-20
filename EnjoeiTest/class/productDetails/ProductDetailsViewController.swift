@@ -131,6 +131,7 @@ extension ProductDetailsViewController {
     }
     
     private func applyNavigationAppearance() {
+        navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.barTintColor = .clear
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isTranslucent = true

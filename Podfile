@@ -7,10 +7,11 @@ target 'EnjoeiTest' do
     inhibit_all_warnings!
     
     # Pods for EnjoeiTest
-    
     pod 'INSPullToRefresh'
     pod 'Cartography'
     pod 'Kingfisher'
+    pod 'RxSwift'
+    pod 'RxCocoa'
     
     swift4 = ['Cartography', 'Kingfisher']
     

@@ -2,23 +2,36 @@ PODS:
   - Cartography (3.1.0)
   - INSPullToRefresh (1.2.0)
   - Kingfisher (5.2.0)
+  - RxAtomic (4.4.2)
+  - RxCocoa (4.4.2):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.4.2):
+    - RxAtomic (>= 4.4.2, ~> 4.4)
 
 DEPENDENCIES:
   - Cartography
   - INSPullToRefresh
   - Kingfisher
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Cartography
     - INSPullToRefresh
     - Kingfisher
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
 
 SPEC CHECKSUMS:
   Cartography: 1988b7578871a56c036e7af17195cb2190edf18c
   INSPullToRefresh: d34f0046ccca6b32f6386f053d730ef41b3f35b7
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
+  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
+  RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
+  RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
 
-PODFILE CHECKSUM: d4e6913c1fa7f32c58c527d7ae06f1a1cadb336e
+PODFILE CHECKSUM: e4a15db28eb136fd7dc18b31a042b4df28448ae5
 
 COCOAPODS: 1.5.3

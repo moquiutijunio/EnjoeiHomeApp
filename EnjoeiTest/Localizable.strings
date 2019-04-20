@@ -11,8 +11,11 @@
 "search" = "Buscar";
 "upload" = "Enviar";
 "inbox" = "Caixa de entrada";
+"ok" = "ok";
+"try.again" = "Tentar novamente";
 
 //Error
+"error.title" = "ops";
 "message.error" = "Um erro desconhecido ocorreu, tente novamente mais tarde.";
 "product.empty" = "Nenhum produto encontrado, tente novamente mais tarde.";
 
