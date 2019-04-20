@@ -33,6 +33,6 @@ class HomeHeaderView: UIView {
 extension HomeHeaderView {
     
     class func instantiateFromNib() -> HomeHeaderView {
-        return Bundle.main.loadNibNamed("HomeHeaderView", owner: self, options: nil)?.first as! HomeHeaderView
+        return UINib(nibName: "HomeHeaderView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! HomeHeaderView
     }
 }

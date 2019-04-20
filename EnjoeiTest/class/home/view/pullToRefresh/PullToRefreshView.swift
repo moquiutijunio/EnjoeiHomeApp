@@ -43,6 +43,6 @@ extension PullToRefreshView: INSPullToRefreshBackgroundViewDelegate {
 extension PullToRefreshView {
     
     class func instantiateFromNib() -> PullToRefreshView {
-        return Bundle.main.loadNibNamed("PullToRefreshView", owner: self, options: nil)?.first as! PullToRefreshView
+        return UINib(nibName: "PullToRefreshView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! PullToRefreshView
     }
 }

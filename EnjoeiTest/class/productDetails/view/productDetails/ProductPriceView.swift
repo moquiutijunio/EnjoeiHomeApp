@@ -41,6 +41,6 @@ class ProductPriceView: UIView {
 extension ProductPriceView {
     
     class func instantiateFromNib() -> ProductPriceView {
-        return Bundle.main.loadNibNamed("ProductPriceView", owner: self, options: nil)?.first as! ProductPriceView
+        return UINib(nibName: "ProductPriceView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! ProductPriceView
     }
 }

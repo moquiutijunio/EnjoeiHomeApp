@@ -37,6 +37,6 @@ extension InfinityScrollRefreshView: INSInfiniteScrollBackgroundViewDelegate {
 extension InfinityScrollRefreshView {
     
     class func instantiateFromNib() -> InfinityScrollRefreshView {
-        return Bundle.main.loadNibNamed("InfinityScrollRefreshView", owner: self, options: nil)?.first as! InfinityScrollRefreshView
+        return UINib(nibName: "InfinityScrollRefreshView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! InfinityScrollRefreshView
     }
 }

@@ -95,7 +95,7 @@ class MainTabViewController: UITabBarController {
                 
                 self.profileController.tabBarItem.image = customView.toImage.withRenderingMode(.alwaysOriginal)
 
-                //Change layout when tab bar did tap
+                //Change layout to selected image
                 customView.layer.borderColor = UIColor.primaryColor.cgColor
                 customView.layer.borderWidth = 1
                 self.profileController.tabBarItem.selectedImage = customView.toImage.withRenderingMode(.alwaysOriginal)
