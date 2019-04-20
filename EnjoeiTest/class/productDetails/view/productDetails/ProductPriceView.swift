@@ -27,7 +27,7 @@ class ProductPriceView: UIView {
         
         paymentDetailsLabel.font = UIFont.proximaNovaRegularLight(ofSize: 14)
         paymentDetailsLabel.textAlignment = .left
-        paymentDetailsLabel.textColor = UIColor(red: 0.49, green: 0.48, blue: 0.47, alpha: 1)
+        paymentDetailsLabel.textColor = .black2
     }
 
     func bindIn(viewModel: ProductPriceViewModel) {

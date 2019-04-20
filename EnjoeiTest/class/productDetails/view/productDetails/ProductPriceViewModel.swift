@@ -36,17 +36,17 @@ class ProductPriceViewModel: NSObject {
         let text = self.price
         attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: text))
         
-        let range = (text as NSString).range(of: "R$ \(product.price)")
-        attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.primaryColor, range: range)
-        attributedText?.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+        let productPriceFullRange = (text as NSString).range(of: "R$ \(product.price)")
+        attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.primaryColor, range: productPriceFullRange)
+        attributedText?.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: productPriceFullRange)
         
-        let range2 = (text as NSString).range(of: "R$ \(product.minimumPrice)")
-        attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: range2)
+        let productMinimumPriceFullRange = (text as NSString).range(of: "R$ \(product.minimumPrice)")
+        attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: productMinimumPriceFullRange)
         
-        let range3 = (text as NSString).range(of: "\(product.price)")
-        attributedText?.addAttribute(NSAttributedString.Key.font, value: UIFont.proximaNovaRegularBold(ofSize: 22)!, range: range3)
+        let productPriceRange = (text as NSString).range(of: "\(product.price)")
+        attributedText?.addAttribute(NSAttributedString.Key.font, value: UIFont.proximaNovaRegularBold(ofSize: 22)!, range: productPriceRange)
         
-        let range4 = (text as NSString).range(of: "\(product.minimumPrice)")
-        attributedText?.addAttribute(NSAttributedString.Key.font, value: UIFont.proximaNovaRegularBold(ofSize: 22)!, range: range4)
+        let productMinimumPriceRange = (text as NSString).range(of: "\(product.minimumPrice)")
+        attributedText?.addAttribute(NSAttributedString.Key.font, value: UIFont.proximaNovaRegularBold(ofSize: 22)!, range: productMinimumPriceRange)
     }
 }

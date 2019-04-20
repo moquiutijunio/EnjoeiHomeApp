@@ -21,4 +21,8 @@ extension UIColor {
     public static var gray2: UIColor {
         return UIColor(red: 0.36, green: 0.35, blue: 0.33, alpha: 1)
     }
+    
+    public static var black2: UIColor {
+        return UIColor(red: 0.49, green: 0.48, blue: 0.47, alpha: 1)
+    }
 }

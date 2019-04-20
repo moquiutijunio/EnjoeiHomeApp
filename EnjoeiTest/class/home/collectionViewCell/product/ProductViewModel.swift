@@ -31,8 +31,8 @@ class ProductViewModel: NSObject {
         let text = self.details
         attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: text))
         if let size = product.size {
-            let range = (text as NSString).range(of: "- tam \(size)")
-            attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray2, range: range)
+            let productSizeRange = (text as NSString).range(of: "- tam \(size)")
+            attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray2, range: productSizeRange)
         }
     }
 }
