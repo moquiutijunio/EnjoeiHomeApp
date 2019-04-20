@@ -21,9 +21,12 @@ class APIClient {
     static let baseURLString = "https://pastebin.com/raw"
     static let photoBaseURLString = "https://photos.enjoei.com.br/public"
     
+    //Current User Avatar Image
+    static let currentUserAvatarURL = URL(string: "https://photos.enjoei.com.br/karen-bachinii/100x100/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9hdmF0YXJzLzQ3ODM3NjcvMWNjYmFlZWUwZDhiM2ZkYWY0NzU1OWFjNjAyOGM4MDAuanBn.jpg")!
+    
     //Product List paths
-    private let productFirstPathPage = "/vNWpzLB9"
-    private let productNextPathPage = "/X2r3iTxJ"
+    static let productFirstPathPage = "/vNWpzLB9"
+    static let productNextPathPage = "/X2r3iTxJ"
     
     private var productListRequestResponseSubject = BehaviorSubject<RequestResponse<[Product]>>(value: .new)
 }
@@ -37,7 +40,7 @@ extension APIClient: APIClientProtocol {
     }
     
     func getProductList(currentPage: Int)  {
-        let path = currentPage == 1 ? productFirstPathPage : productNextPathPage
+        let path = currentPage == 1 ? APIClient.productFirstPathPage : APIClient.productNextPathPage
         
         guard let url = URL(string: "\(APIClient.baseURLString)\(path)") else {
             productListRequestResponseSubject.onNext(.failure(error: NSLocalizedString("message.error", comment: "")))
