@@ -164,7 +164,7 @@
                 <outlet property="photoImageView" destination="xBD-c8-MAq" id="raY-WE-Mqc"/>
                 <outlet property="titleLabel" destination="f4s-Pg-VqJ" id="XgL-LA-WRO"/>
             </connections>
-            <point key="canvasLocation" x="-1567" y="160"/>
+            <point key="canvasLocation" x="-2014" y="329"/>
         </collectionViewCell>
     </objects>
 </document>

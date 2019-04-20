@@ -14,22 +14,15 @@ protocol MessageViewModelCallbackProtocol: AnyObject {
     func tryAgain()
 }
 
-class MessageViewModel: NSObject {
+class MessageViewModel: NSObject, MessageCollectionViewModelProtocol {
     
-    private let _title: String
+    let title: String
     private weak var callback: MessageViewModelCallbackProtocol?
     
     init(title: String, callback: MessageViewModelCallbackProtocol?) {
-        self._title = title
+        self.title = title
         super.init()
         self.callback = callback
-    }
-}
-
-extension MessageViewModel: MessageCollectionViewModelProtocol {
-    
-    var title: Observable<String> {
-        return .just(_title)
     }
     
     func tryAgainTapped() {

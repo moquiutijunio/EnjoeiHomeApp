@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class ProductViewModel: NSObject {
+class ProductViewModel: NSObject, ProductViewModelCallbackProtocol {
     
     let product: Product
     let title: String
     let details: String
-    let likeCount: String
     let userAvatarURL: URL?
     let photoURL: URL?
     var attributedText: NSMutableAttributedString?
@@ -22,9 +23,10 @@ class ProductViewModel: NSObject {
         self.product = product
         self.title = product.title
         self.details = product.size != nil ? "R$ \(product.price) - tam \(product.size!)" : "R$ \(product.price)"
-        self.likeCount = "\(product.likesCount ?? 0)"
         self.userAvatarURL = product.user.image.imageId.convertToURLUsing(resolution: .mini)
         self.photoURL = product.images.first?.imageId.convertToURLUsing(resolution: .medium)
+        self.likeCountRelay = BehaviorRelay(value: product.likesCount ?? 0)
+        self.userLikedRelay = BehaviorRelay(value: false)
         
         super.init()
         
@@ -34,5 +36,23 @@ class ProductViewModel: NSObject {
             let productSizeRange = (text as NSString).range(of: "- tam \(size)")
             attributedText?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.lightGray2, range: productSizeRange)
         }
+    }
+    
+    private let likeCountRelay: BehaviorRelay<Int>
+    var likeCount: Observable<String> {
+        return likeCountRelay
+            .asObservable()
+            .map {"\($0)"}
+    }
+    
+    private let userLikedRelay: BehaviorRelay<Bool>
+    var userLiked: Observable<Bool> {
+        return userLikedRelay
+            .asObservable()
+    }
+    
+    func likeButtonDidTap() {
+        userLikedRelay.accept(!userLikedRelay.value)
+        likeCountRelay.accept(userLikedRelay.value == true ? (likeCountRelay.value + 1) : (likeCountRelay.value - 1))
     }
 }

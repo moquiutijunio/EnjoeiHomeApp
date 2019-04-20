@@ -11,7 +11,7 @@ import RxSwift
 
 protocol MessageCollectionViewModelProtocol {
     
-    var title: Observable<String> { get }
+    var title: String { get }
     func tryAgainTapped()
 }
 
@@ -47,9 +47,7 @@ class MessageCollectionViewCell: BaseCollectionViewCell {
     func bindIn(viewModel: MessageCollectionViewModelProtocol) {
         disposeBag = DisposeBag()
         
-        viewModel.title
-            .bind(to: messageLabel.rx.text)
-            .disposed(by: disposeBag)
+        messageLabel.text = viewModel.title
         
         tryAgainButton.rx.tap
             .bind { viewModel.tryAgainTapped() }
