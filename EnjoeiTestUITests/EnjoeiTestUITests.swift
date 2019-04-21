@@ -7,28 +7,44 @@
 //
 
 import XCTest
+@testable import Pods_EnjoeiTest
 
 class EnjoeiTestUITests: XCTestCase {
     
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-        
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
+    let app = XCUIApplication()
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func setUp() {
+        continueAfterFailure = false
+        app.launch()
     }
     
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+        //Navigation between tabs and return to home
+        let tabBarsQuery = app.tabBars
+        tabBarsQuery.children(matching: .button).element(boundBy: 1).tap()
+        tabBarsQuery.children(matching: .button).element(boundBy: 2).tap()
+        tabBarsQuery.children(matching: .button).element(boundBy: 3).tap()
+        tabBarsQuery.children(matching: .button).element(boundBy: 4).tap()
+        tabBarsQuery.children(matching: .button).element(boundBy: 0).tap()
+
+        //Force pull to refresh
+        let cellsQuery = app.collectionViews.cells
+        cellsQuery.otherElements.containing(.staticText, identifier:"biquini top tomara que caia - salinas").element.swipeDown()
+
+        //Force infinity scroll
+        let collectionView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .collectionView).element
+        collectionView.swipeUp()
+        collectionView.swipeUp()
+        cellsQuery.otherElements.containing(.staticText, identifier:"canga de praia").element.swipeUp()
+
+        //Open product details
+        collectionView.swipeDown()
+        collectionView.swipeDown()
+        collectionView.swipeDown()
+        cellsQuery.otherElements.containing(.staticText, identifier:"biquini top tomara que caia - salinas").element.tap()
+
+        //Back to home
+        app.navigationBars["EnjoeiTest.ProductDetailsView"].buttons["Back"].tap()
     }
-    
 }
