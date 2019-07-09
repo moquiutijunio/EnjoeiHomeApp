@@ -17,3 +17,11 @@ A ferramenta `cocoapods` instalará todas as bibliotecas que foram definidas no 
 ```bash
 $ pod install
 ```
+
+## Application
+
+<p align="center">
+    <img src="https://i.imgur.com/McgvwQB.png" width="200" max-width="50%" alt="Jera Labs" />
+    <img src="https://i.imgur.com/vLlylgL.png" width="200" max-width="50%" alt="Jera Labs" />
+    <img src="https://i.imgur.com/MZVYZvp.png" width="203" max-width="50%" alt="Jera Labs" />
+</p>
