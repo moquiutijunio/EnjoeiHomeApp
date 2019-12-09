@@ -1,8 +1,8 @@
 # Enjoei teste - iOS
 
-## Instalação do Projeto
+## Project Installation
 
-### Especificações
+### Specifications
 
 - [Xcode](https://developer.apple.com/download/more/) 10.1
 - [Cocoapods](https://cocoapods.org/) 1.5.4
@@ -10,9 +10,9 @@
 - Swift 4.2
 - Arquitetura MVC
 
-**Instalação das libs**
+**Installation**
 
-A ferramenta `cocoapods` instalará todas as bibliotecas que foram definidas no Podfile do projeto.
+The `cocoapods` tool will install all libraries that have been defined in the project Podfile.
 
 ```bash
 $ pod install
